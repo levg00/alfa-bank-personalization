@@ -6,7 +6,7 @@
 
 🏆 **Финал кейс-школы «Альфа-Будущее»**, команда **«Первые»**.
 
-#### 🖥️ [Прототип](docs/) · 📄 [Финальная презентация](materials/presentation.ru.pdf) · 📊 [Расчёты](analysis/)
+#### 🖥️ [Открыть прототип](https://levg00.github.io/alfa-bank-personalization/) · 📄 [Финальная презентация](materials/presentation.ru.pdf) · 📊 [Расчёты](analysis/)
 
 ## 🎯 Задача
 
