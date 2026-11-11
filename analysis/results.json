@@ -1,0 +1,375 @@
+{
+  "base": {
+    "raw_records": 669838,
+    "skb_records": 65540,
+    "skb_clients": 28463,
+    "trade_clients": 10147,
+    "solo_trade": 1994,
+    "group_trade_entities": 8153,
+    "trade_groups": 5921,
+    "wholesale_clients": 9384,
+    "manufacturing_clients": 5426
+  },
+  "metrics": [
+    {
+      "id": "wholesale_records",
+      "metric": "Опт среди записей СКБ",
+      "numerator": 17985,
+      "denominator": 65540,
+      "value": 0.27441257247482453,
+      "scope": "Все записи с выручкой ≥ 500 млн",
+      "source": "Uid_data: REVENUE_COMPANY, MAINOKVED_CODE",
+      "method": "Код начинается с 46; знаменатель включает записи с неоднозначным ID",
+      "kind": "share"
+    },
+    {
+      "id": "client_group",
+      "metric": "Действующие клиенты СКБ в группах",
+      "numerator": 23567,
+      "denominator": 28463,
+      "value": 0.8279872114675192,
+      "scope": "CLIENT, выручка ≥ 500 млн",
+      "source": "Uid_data: GROUP_ID",
+      "method": "Состав группы определён по всем записям профиля; группа содержит > 1 записи",
+      "kind": "share"
+    },
+    {
+      "id": "all_group_records",
+      "metric": "Записи СКБ в группах",
+      "numerator": 50010,
+      "denominator": 65540,
+      "value": 0.7630454684162343,
+      "scope": "Все записи СКБ",
+      "source": "Uid_data: GROUP_ID",
+      "method": "Доля записей, принадлежащих группам с > 1 записи во всей базе",
+      "kind": "share"
+    },
+    {
+      "id": "trade_group",
+      "metric": "Торговые клиенты в группах",
+      "numerator": 8153,
+      "denominator": 10147,
+      "value": 0.8034887158766137,
+      "scope": "CLIENT, СКБ, ОКВЭД 46/47",
+      "source": "Uid_data: CL_TYPE, GROUP_ID, MAINOKVED_CODE",
+      "method": "Отбор торговых клиентов; состав группы по полной базе",
+      "kind": "share"
+    },
+    {
+      "id": "person_client",
+      "metric": "Клиенты СКБ со связью с физлицом",
+      "numerator": 20308,
+      "denominator": 28463,
+      "value": 0.7134876857674877,
+      "scope": "Действующие клиенты СКБ",
+      "source": "Fid_Uid_link + Uid_data",
+      "method": "Существует хотя бы одна связь; наличие или качество роли не измеряется",
+      "kind": "share"
+    },
+    {
+      "id": "person_trade",
+      "metric": "Торговые клиенты со связью с физлицом",
+      "numerator": 7475,
+      "denominator": 10147,
+      "value": 0.7366709372228245,
+      "scope": "Действующие торговые клиенты СКБ",
+      "source": "Fid_Uid_link + Uid_data",
+      "method": "Покрытие связями, не ролями",
+      "kind": "share"
+    },
+    {
+      "id": "person_records",
+      "metric": "Записи СКБ со связью с физлицом",
+      "numerator": 23640,
+      "denominator": 65540,
+      "value": 0.3606957583155325,
+      "scope": "Все записи СКБ",
+      "source": "Fid_Uid_link + Uid_data",
+      "method": "Знаменатель включает записи с неоднозначным ID",
+      "kind": "share"
+    },
+    {
+      "id": "multi_person_client",
+      "metric": "Люди, связанные с несколькими клиентами СКБ",
+      "numerator": 2479,
+      "denominator": 24754,
+      "value": 0.10014543104144785,
+      "scope": "Люди со связью хотя бы с одним клиентом СКБ",
+      "source": "Fid_Uid_link",
+      "method": "Связь с ≥ 2 различными юрлицами; не доказательство общего собственника",
+      "kind": "share"
+    },
+    {
+      "id": "top3_70",
+      "metric": "Оптовые клиенты с топ-3 > 70% поступлений",
+      "numerator": 5336,
+      "denominator": 8583,
+      "value": 0.6216940463707329,
+      "scope": "Оптовые клиенты СКБ с пригодными входящими платежами",
+      "source": "Uid_payment + Uid_data",
+      "method": "Агрегат по плательщику; топ-3 / все наблюдаемые поступления; положительные платежи, без самого себе и неоднозначных ID",
+      "kind": "share"
+    },
+    {
+      "id": "top3_coverage",
+      "metric": "Покрытие оптовиков входящими платежами",
+      "numerator": 8583,
+      "denominator": 9384,
+      "value": 0.9146419437340153,
+      "scope": "Все оптовые клиенты СКБ",
+      "source": "Uid_payment + Uid_data",
+      "method": "Отсутствие поступлений считается отсутствием данных, не нулевой концентрацией",
+      "kind": "share"
+    },
+    {
+      "id": "external_top3_70",
+      "metric": "Оптовики с внешним топ-3 > 70%",
+      "numerator": 5122,
+      "denominator": 8368,
+      "value": 0.612093690248566,
+      "scope": "Оптовые клиенты с наблюдаемыми внешними поступлениями",
+      "source": "Uid_payment + GROUP_ID",
+      "method": "Из поступлений исключены известные внутригрупповые переводы; неизвестные группы не равны внешним подтверждённым связям",
+      "kind": "share"
+    },
+    {
+      "id": "intra20",
+      "metric": "Клиенты групп с внутригрупповыми > 20%",
+      "numerator": 6607,
+      "denominator": 22868,
+      "value": 0.28891901346860244,
+      "scope": "Клиенты СКБ в группах с пригодными исходящими",
+      "source": "Uid_payment + GROUP_ID",
+      "method": "Доля известных внутригрупповых исходящих среди пригодных наблюдаемых исходящих; неполнота связей может занижать долю",
+      "kind": "share"
+    },
+    {
+      "id": "fts_wholesale",
+      "metric": "Оптовые клиенты с флагом ФТС",
+      "numerator": 4385,
+      "denominator": 9384,
+      "value": 0.4672847399829497,
+      "scope": "Все оптовые клиенты СКБ",
+      "source": "Uid_data: FTS_FLAG",
+      "method": "Флаг источника, не подтверждение текущего импортного контракта",
+      "kind": "share"
+    },
+    {
+      "id": "fts_without_ved",
+      "metric": "Клиенты ФТС без записи ВЭД",
+      "numerator": 4116,
+      "denominator": 4385,
+      "value": 0.938654503990878,
+      "scope": "Оптовые клиенты СКБ с FTS_FLAG=1",
+      "source": "Uid_product + Uid_data",
+      "method": "Отсутствует PRODUCT=ВЭД; продукт в другом банке и потребность не определяются",
+      "kind": "share"
+    },
+    {
+      "id": "factoring_flag",
+      "metric": "Оптовые клиенты с флагом факторинга",
+      "numerator": 23,
+      "denominator": 9384,
+      "value": 0.0024509803921568627,
+      "scope": "Все оптовые клиенты СКБ",
+      "source": "Uid_data: FACTORING_MARK",
+      "method": "Флаг профиля; отдельно от продуктовой таблицы",
+      "kind": "share"
+    },
+    {
+      "id": "factoring_product",
+      "metric": "Оптовики с продуктовой записью факторинга",
+      "numerator": 41,
+      "denominator": 9384,
+      "value": 0.004369138959931799,
+      "scope": "Все оптовые клиенты СКБ",
+      "source": "Uid_product",
+      "method": "Иной источник и определение, чем FACTORING_MARK",
+      "kind": "share"
+    },
+    {
+      "id": "recipient_different",
+      "metric": "Крупнейший получатель из другого сектора",
+      "numerator": 19604,
+      "denominator": 27501,
+      "value": 0.7128468055707066,
+      "scope": "Клиенты СКБ с сопоставимыми кодами крупнейшего получателя",
+      "source": "Uid_payment + MAINOKVED_CODE",
+      "method": "Отрасль по первым 2 цифрам; получатель не обязательно поставщик",
+      "kind": "share"
+    },
+    {
+      "id": "trade_group_mixed",
+      "metric": "Торговые группы с разными секторами",
+      "numerator": 5009,
+      "denominator": 5921,
+      "value": 0.8459719641952372,
+      "scope": "Группы с действующим торговым клиентом СКБ; все участники профиля",
+      "source": "Uid_data: GROUP_ID, MAINOKVED_CODE",
+      "method": "Разные первые 2 цифры ОКВЭД; полная база участников, а не только крупные компании",
+      "kind": "share"
+    },
+    {
+      "id": "trade_group_dominant",
+      "metric": "Торговые группы с долей сектора ≥ 50%",
+      "numerator": 5325,
+      "denominator": 5921,
+      "value": 0.8993413274784665,
+      "scope": "Торговые группы с положительной известной выручкой и ОКВЭД",
+      "source": "Uid_data: GROUP_ID, REVENUE_COMPANY, MAINOKVED_CODE",
+      "method": "Максимальная сумма известной выручки сектора / сумма известной выручки; не консолидированная выручка; ≥50% допускает ничью",
+      "kind": "share"
+    },
+    {
+      "id": "trade_group_dominant_complete",
+      "metric": "Доминирующий сектор при полном покрытии выручкой",
+      "numerator": 5316,
+      "denominator": 5880,
+      "value": 0.9040816326530612,
+      "scope": "Торговые группы: у каждого участника известна положительная выручка",
+      "source": "Uid_data",
+      "method": "Отдельная проверка чувствительности к пропускам",
+      "kind": "share"
+    }
+  ],
+  "pilot": {
+    "units": 7915,
+    "solo": 1994,
+    "groups": 5921,
+    "test": 3561,
+    "control": 3561,
+    "holdout": 793,
+    "baseline_assumption": 0.1,
+    "target_assumption": 0.12,
+    "alpha": 0.05,
+    "power": 0.8,
+    "required_per_arm": 3841,
+    "mde_relative": 0.20803974014383428,
+    "method": "Нормальное приближение для двух независимых долей, двусторонний тест; допущение общей базовой конверсии 10%; S1/S2 имеют разные единицы, нужны отдельные базовые оценки и план объединения"
+  },
+  "sensitivity": [
+    {
+      "baseline": 0.03,
+      "relative_target": 0.2,
+      "target": 0.036,
+      "required_per_arm": 13914,
+      "mde_relative_available": 0.41331986700002243
+    },
+    {
+      "baseline": 0.05,
+      "relative_target": 0.2,
+      "target": 0.06,
+      "required_per_arm": 8158,
+      "mde_relative_available": 0.3096865601348858
+    },
+    {
+      "baseline": 0.1,
+      "relative_target": 0.2,
+      "target": 0.12,
+      "required_per_arm": 3841,
+      "mde_relative_available": 0.20803974014383428
+    },
+    {
+      "baseline": 0.15,
+      "relative_target": 0.2,
+      "target": 0.18,
+      "required_per_arm": 2402,
+      "mde_relative_available": 0.16315672250387844
+    },
+    {
+      "baseline": 0.2,
+      "relative_target": 0.2,
+      "target": 0.24,
+      "required_per_arm": 1683,
+      "mde_relative_available": 0.13603668904978494
+    }
+  ],
+  "quality": {
+    "source_manifest": [
+      {
+        "file": "Uid_data.csv",
+        "rows": 669838,
+        "columns": [
+          "SYNTHETIC_U",
+          "ORG_TYPE",
+          "OKFS_NAME",
+          "OGRN_DATE",
+          "ECO_MARK_LABEL",
+          "MAINOKVED_CODE",
+          "MAINOKVED_NAME",
+          "NEGATIVEMARK",
+          "AMOUNT_WORKERS_SPARK",
+          "AMOUNT_WORKERS_FNS",
+          "CL_TYPE",
+          "CL_PRODUCT_RKO_MARK",
+          "CL_PRODUCT_GAR_MARK",
+          "CL_PRODUCT_LOA_MARK",
+          "CL_PRODUCT_LEA_MARK",
+          "CL_PRODUCT_DEP_MARK",
+          "CL_PRODUCT_ZPP_MARK",
+          "FTS_FLAG",
+          "FTS_COUNTRY_NAME",
+          "FACTORING_MARK",
+          "REVENUE_COMPANY",
+          "REVENUE_GROUP",
+          "GROUP_ID",
+          "CITY",
+          "REGION"
+        ],
+        "sha256": "b653c8b76c005151457069c11fae0559b04b1836c5257ec6f2342c7fa5e60069"
+      },
+      {
+        "file": "Uid_payment.csv",
+        "rows": 2368387,
+        "columns": [
+          "BENEFICIARY",
+          "PAYER",
+          "PAY_AMT",
+          "PAY_CNT"
+        ],
+        "sha256": "736d73ebc15c2e0271a0da9a53da501b390ed3bf43aaa5111ab7ed2f4893495d"
+      },
+      {
+        "file": "Fid_Uid_link.csv",
+        "rows": 208154,
+        "columns": [
+          "SYNTHETIC_F",
+          "CITY_NAME",
+          "RC_NAME",
+          "SYNTHETIC_U"
+        ],
+        "sha256": "31da99e5f6e2d41ac92e37bb1a069e3bb4dff48aebf021b5d589b68702a071fb"
+      },
+      {
+        "file": "Uid_product.csv",
+        "rows": 264442,
+        "columns": [
+          "SYNTHETIC_U",
+          "PRODUCT"
+        ],
+        "sha256": "a5dc0793cd43aadc07ff0eb739a2ce718fd4d124eeadf9fc456e6c2bbbbc6047"
+      }
+    ],
+    "ambiguous_ids": [
+      "U_428697"
+    ],
+    "ambiguous_profile_rows": 241142,
+    "ambiguous_skb_rows": 12053,
+    "exact_duplicate_profile_rows": 24,
+    "ambiguous_payment_rows": 153,
+    "nonpositive_payment_rows": 0,
+    "self_payment_rows": 85444,
+    "usable_payment_rows": 2282790,
+    "incoming_coverage_clients": 25607,
+    "outgoing_coverage_clients": 27526,
+    "fields_unavailable": [
+      "Роли и права пользователей",
+      "Даты платежей",
+      "События показов и кликов",
+      "Назначение платежа",
+      "Согласия и контакты",
+      "Заявки и результаты по датам",
+      "Доход и стоимость обслуживания банка"
+    ]
+  }
+}
