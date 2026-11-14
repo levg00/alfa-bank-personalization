@@ -16,15 +16,20 @@
 ## Связи
 
 ```mermaid
-flowchart LR
-    C["Uid_data<br/>SYNTHETIC_U · компания<br/>GROUP_ID · группа"]
-    P["Uid_payment<br/>PAYER · отправитель<br/>BENEFICIARY · получатель"]
-    F["Fid_Uid_link<br/>SYNTHETIC_U · компания<br/>SYNTHETIC_F · физлицо"]
-    R["Uid_product<br/>SYNTHETIC_U · компания<br/>PRODUCT · продукт"]
-    P -->|PAYER → SYNTHETIC_U| C
-    P -->|BENEFICIARY → SYNTHETIC_U| C
-    F -->|SYNTHETIC_U| C
-    R -->|SYNTHETIC_U| C
+flowchart TB
+    C("Uid_data<br/>Компании и группы")
+    P("Uid_payment<br/>Платежи")
+    F("Fid_Uid_link<br/>Связи с физлицами")
+    R("Uid_product<br/>Продукты компаний")
+
+    C -->|PAYER / BENEFICIARY| P
+    C -->|SYNTHETIC_U| F
+    C -->|SYNTHETIC_U| R
+
+    classDef central fill:#dbeafe,stroke:#3b82f6,color:#172554,stroke-width:2px
+    classDef related fill:#f1f5f9,stroke:#94a3b8,color:#1e293b
+    class C central
+    class P,F,R related
 ```
 
 - **Компания** связывается с платежами, физлицами и продуктами через `SYNTHETIC_U`.
