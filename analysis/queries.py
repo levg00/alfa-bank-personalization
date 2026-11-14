@@ -26,7 +26,7 @@ trading = clients[clients["sector"].isin(["46", "47"])]
 wholesalers = clients[clients["sector"] == "46"]
 
 # Для соединения платежей берём ID с единственным профилем.
-ambiguous_ids = profiles.loc[profiles["SYNTHETIC_U"].duplicated(keep=False), "SYNTHETIC_U"].unique()
+ambiguous_ids = profiles.loc[profiles["SYNTHETIC_U"].duplicated(keep=False), "SYNTHETIC_U"]
 unique_profiles = profiles[~profiles["SYNTHETIC_U"].isin(ambiguous_ids)]
 group_by_id = unique_profiles.set_index("SYNTHETIC_U")["GROUP_ID"]
 sector_by_id = unique_profiles.set_index("SYNTHETIC_U")["sector"]
@@ -57,7 +57,7 @@ print("Групп с торговыми клиентами:", len(trade_groups))
 print(f"Торговых клиентов в группах: {trading['in_group'].mean():.2%}")
 print(f"Всех действующих клиентов в группах: {clients['in_group'].mean():.2%}")
 print(f"Записей среднего и крупного бизнеса в группах: {corporate['in_group'].mean():.2%}")
-print(f"Оптовая торговля среди записей среднего и крупного бизнеса: {corporate['sector'].eq('46').fillna(False).mean():.2%}")
+print(f"Оптовая торговля среди записей среднего и крупного бизнеса: {corporate['sector'].eq('46').mean():.2%}")
 
 # 2. Зависимость от крупнейших покупателей
 # Суммируем поступления от каждого плательщика. Считаем долю трёх крупнейших плательщиков в поступлениях каждого оптовика.
@@ -66,8 +66,8 @@ incoming = (
     .groupby(["BENEFICIARY", "PAYER"])["PAY_AMT"].sum()
 )
 incoming_total = incoming.groupby(level="BENEFICIARY").sum()
-top3 = incoming.sort_values(ascending=False).groupby(level="BENEFICIARY").head(3)
-top3_share = top3.groupby(level="BENEFICIARY").sum() / incoming_total
+top3 = incoming.groupby(level="BENEFICIARY").nlargest(3)
+top3_share = top3.groupby(level=0).sum() / incoming_total
 wholesale_top3 = top3_share.reindex(wholesalers["SYNTHETIC_U"]).dropna()
 
 # Отдельно считаем концентрацию после исключения внутригрупповых переводов.
@@ -76,7 +76,7 @@ external = clean_payments[
     & clean_payments["BENEFICIARY"].isin(clients["SYNTHETIC_U"])
 ].groupby(["BENEFICIARY", "PAYER"])["PAY_AMT"].sum()
 external_share = (
-    external.sort_values(ascending=False).groupby(level="BENEFICIARY").head(3).groupby(level="BENEFICIARY").sum()
+    external.groupby(level="BENEFICIARY").nlargest(3).groupby(level=0).sum()
     / external.groupby(level="BENEFICIARY").sum()
 )
 wholesale_external = external_share.reindex(wholesalers["SYNTHETIC_U"]).dropna()
@@ -189,12 +189,3 @@ required_per_arm = math.ceil(
 print(f"z₁₋α/₂ = {z_alpha:.5f}")
 print(f"z₁₋β = {z_power:.5f}")
 print("Нужно участников на одну ветку:", required_per_arm)
-
-# 10. MDE по формуле из решения
-# Подставляем коэффициенты, базовую конверсию 10% и размер тестовой ветки в формулу из README проекта.
-mde_relative = (
-    (z_alpha + z_power) / p0
-    * math.sqrt(2 * p0 * (1 - p0) / test_size)
-)
-
-print(f"MDE с округлением до целого процента: {mde_relative:.0%}")
