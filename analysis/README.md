@@ -4,6 +4,8 @@
 
 **Python · Pandas**
 
+🗂️ [Структура данных](../data/README.md)
+
 <details>
 <summary>Загрузка и подготовка таблиц</summary>
 
