@@ -33,7 +33,7 @@ Keep the current ML optimizer and use customer data analysis to add rules that t
 | What the company does and what its payments look like | Offer a working capital loan to a wholesaler with seasonal procurement needs; consider factoring for one highly dependent on major buyers |
 | Who opens the offer | Show the CFO a calculation and an application button; let the accountant prepare an application and forward it to the decision-maker |
 | Whether the company is standalone or part of a group | Select a product for the standalone company's needs; for a group, consider balances and payments across several legal entities |
-| How the user interacts with the bank and responds to offers | Show an online banking banner to an active user; use a manager contact for someone who prefers personal communication. Pause after two impressions without a response |
+| How the user interacts with the bank and responds to offers | Show an online banking banner to an active user; offer contact through a relationship manager to someone who prefers personal communication. Pause after two impressions without a response |
 
 <details>
 <summary><b>📊 Hypotheses and the new ML optimizer architecture</b></summary>
@@ -44,7 +44,7 @@ Keep the current ML optimizer and use customer data analysis to add rules that t
 
 ### Solution architecture
 
-[![Slide 4: new features and rules within the existing optimizer](assets/architecture.en.png)](materials/presentation.en.pdf#page=4)
+[![Slide 4: new features and rules in the existing optimizer](assets/architecture.en.png)](materials/presentation.en.pdf#page=4)
 
 </details>
 
@@ -54,7 +54,7 @@ Keep the current ML optimizer and use customer data analysis to add rules that t
 
 [![Personalization example: changes in product, copy, button, channel, and frequency for two synthetic customers](assets/personalization.en.png)](materials/presentation.en.pdf)
 
-**In the prototype:** four synthetic profiles, a before/after comparison, an explanation of the selection, and an adaptive application journey.
+The prototype includes four synthetic profiles, a before/after comparison, an explanation of the selection, and an adaptive application journey.
 
 ### 🖥️ [Open prototype](https://levg00.github.io/alfa-bank-personalization/en/)
 
@@ -75,6 +75,8 @@ The prototype runs in a browser using HTML, CSS, and JavaScript.
 | Checked wholesalers' dependence on their largest buyers | For most, more than **70%** of receipts come from just three buyers. This supports the hypothesis of offering factoring. |
 | Checked how much money companies transfer within their group | For **28.9%** of companies, more than one fifth of outgoing payments go to other group members. We proposed managing these companies' balances and transfers together. |
 | Identified each group's leading industry from its members' revenue | In **89.9%** of trading groups, one industry contributes at least half of known revenue. This is a feature for industry-specific personalization |
+
+#### [Data structure](data/README.md) · [Calculations](analysis/README.en.md)
 
 ## 🧪 How we validate the effect
 
@@ -99,18 +101,18 @@ The prototype runs in a browser using HTML, CSS, and JavaScript.
 <details>
 <summary><b>Calculation</b></summary>
 
-- **Baseline conversion (p₀ = 10%).** The assumed share of companies and groups completing the target action. An estimate of 10% was used for the calculation.
-- **Size of each group (n = 3,561).** This is the number of participants assigned to each of the control and treatment arms. It was calculated as 45% of the total available base of 7,915 companies and groups.
-- **Protection against a false alarm (α = 5%).** The significance level. This is the acceptable risk of detecting an effect when there is none. We choose a 5% false-positive threshold over repeated experiments.
-- **Test sensitivity (1 − β = 80%).** Statistical power. If the changes produce an effect of the calculated size, the test should detect it with 80% probability under the calculation's assumptions. The remaining 20% (β = 0.20) is the acceptable risk of missing a real effect.
-- **Statistical coefficients (z₁₋α/₂ ≈ 1.96 and z₁₋β ≈ 0.84).** These are tabulated multipliers from the normal distribution (quantiles). They were calculated in Python using the standard `statistics` module and its `NormalDist().inv_cdf` function. For the first coefficient, we use 1 − α/2 = 0.975 because we split the error risk between an increase and a decrease in conversion. For the second, we use power 1 − β = 0.80.
+- **Baseline conversion (p₀ = 10%).** This is the assumed share of companies and groups completing the target action. An estimate of 10% is used in the calculation.
+- **Size of each group (n = 3,561).** This is the number of participants assigned to each of the control and treatment arms. It is calculated as 45% of the total available base of 7,915 companies and groups.
+- **Protection against false alarms (α = 5%).** The significance level. This is the acceptable risk of finding an effect when none exists. We choose a 5% false-positive threshold across repeated experiments.
+- **Test sensitivity (1 − β = 80%).** Statistical power. If the changes produce an effect of the calculated size, the test should detect it with an 80% probability, provided the calculation's assumptions hold. The remaining 20% (β = 0.20) is the acceptable risk of missing a real effect.
+- **Statistical coefficients (z₁₋α/₂ ≈ 1.96 and z₁₋β ≈ 0.84).** These are tabulated normal-distribution multipliers (quantiles). They are calculated in Python using the standard `statistics` module and `NormalDist().inv_cdf`. For the first coefficient, we use 1 − α/2 = 0.975 because the error risk is split between an increase and a decrease in conversion. For the second, we use the power, 1 − β = 0.80.
 
 </details>
-
 
 ## 📂 Materials
 
 - [Team's final presentation](materials/presentation.en.pdf)
 - [Interactive prototype](https://levg00.github.io/alfa-bank-personalization/en/)
 - [Code, metrics, and calculation methodology](analysis/README.en.md)
+- [Data structure](data/README.md)
 - [Final case brief](materials/brief.en.pdf)
