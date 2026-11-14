@@ -2,7 +2,7 @@
 
 [↩ К проекту](../README.ru.md)
 
-**Python · Pandas · NumPy**
+**Python · Pandas**
 
 <details>
 <summary>Загрузка и подготовка таблиц</summary>
