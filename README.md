@@ -40,11 +40,11 @@ Keep the current ML optimizer and use customer data analysis to add rules that t
 
 ### Hypotheses and targets
 
-[![Slide 3: hypotheses, target metrics, and guardrails](assets/hypotheses.en.png)](materials/presentation.en.pdf#page=3)
+[![Slide 3: hypotheses, target metrics, and guardrails](assets/hypotheses-slide.en.png)](materials/presentation.en.pdf#page=3)
 
 ### Solution architecture
 
-[![Slide 4: new features and rules in the existing optimizer](assets/architecture.en.png)](materials/presentation.en.pdf#page=4)
+[![Slide 4: new features and rules in the existing optimizer](assets/optimizer-architecture.en.png)](materials/presentation.en.pdf#page=4)
 
 </details>
 
@@ -52,7 +52,7 @@ Keep the current ML optimizer and use customer data analysis to add rules that t
 
 **Comparison of two scenarios:** the CFO of a standalone company receives an offer tailored to procurement. The CFO of a group receives an offer for managing pooled balances across several legal entities.
 
-[![Personalization example: changes in product, copy, button, channel, and frequency for two synthetic customers](assets/personalization.en.png)](materials/presentation.en.pdf)
+[![Personalization example: changes in product, copy, button, channel, and frequency for two synthetic customers](assets/personalization-comparison.en.png)](materials/presentation.en.pdf)
 
 The prototype includes four synthetic profiles, a before/after comparison, an explanation of the selection, and an adaptive application journey.
 
