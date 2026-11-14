@@ -110,7 +110,7 @@ The prototype runs in a browser using HTML, CSS, and JavaScript.
 
 ## 📂 Materials
 
-- [Team's final presentation](materials/presentation.en.pdf).
-- [Interactive prototype](https://levg00.github.io/alfa-bank-personalization/en/).
-- [Code, metrics, and calculation methodology](analysis/README.en.md).
-- [Final case brief](materials/brief.en.pdf).
+- [Team's final presentation](materials/presentation.en.pdf)
+- [Interactive prototype](https://levg00.github.io/alfa-bank-personalization/en/)
+- [Code, metrics, and calculation methodology](analysis/README.en.md)
+- [Final case brief](materials/brief.en.pdf)
