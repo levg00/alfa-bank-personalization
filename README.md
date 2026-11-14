@@ -10,7 +10,7 @@ A concept for extending Alfa-Bank's ML optimizer: selecting a banking offer, cop
 
 🏆 **Final round of the Alfa Future case school**, team **Pervye**.
 
-### 🖥️ [Open prototype](https://levg00.github.io/alfa-bank-personalization/en/) · 📄 [Final presentation](materials/presentation.en.pdf) · 📊 [Calculations](analysis/README.en.md)
+### 🖥️ [Open prototype](https://levg00.github.io/alfa-bank-personalization/en/) · 📄 [Final presentation](materials/presentation.en.pdf) · 📊 [Calculations](analysis/README.md)
 
 ## 🎯 Task
 
@@ -76,7 +76,7 @@ The prototype runs in a browser using HTML, CSS, and JavaScript.
 | Checked how much money companies transfer within their group | For **28.9%** of companies, more than one fifth of outgoing payments go to other group members. We proposed managing these companies' balances and transfers together. |
 | Identified each group's leading industry from its members' revenue | In **89.9%** of trading groups, one industry contributes at least half of known revenue. This is a feature for industry-specific personalization |
 
-#### [Data structure](data/README.md) · [Calculations](analysis/README.en.md)
+#### [Data structure](data/README.md) · [Calculations](analysis/README.md)
 
 ## 🧪 How we validate the effect
 
@@ -113,6 +113,6 @@ The prototype runs in a browser using HTML, CSS, and JavaScript.
 
 - [Team's final presentation](materials/presentation.en.pdf)
 - [Interactive prototype](https://levg00.github.io/alfa-bank-personalization/en/)
-- [Code, metrics, and calculation methodology](analysis/README.en.md)
+- [Code, metrics, and calculation methodology](analysis/README.md)
 - [Data structure](data/README.md)
 - [Final case brief](materials/brief.en.pdf)
