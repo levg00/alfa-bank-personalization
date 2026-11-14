@@ -4,7 +4,7 @@
 
 **Python · Pandas**
 
-🗂️ [Структура данных](../data/README.md)
+🗂️ [Структура данных](../data/README.ru.md)
 
 <details>
 <summary>Загрузка и подготовка таблиц</summary>

@@ -1,26 +1,26 @@
-# Структура данных
+# Data structure
 
-[↩ К проекту](../README.ru.md) · [Расчёты](../analysis/README.md)
+[↩ Back to the project](../README.md) · [Calculations](../analysis/README.md)
 
-В кейсе использованы четыре CSV-таблицы. Здесь описана структура этой БД.
+The case uses four CSV tables. This file describes the database structure.
 
-## Таблицы
+## Tables
 
-| Таблица | Содержание |
+| Table | Contents |
 | :--- | :--- |
-| `Uid_data.csv` | Профили компаний, отрасли, выручка, группы и продуктовые флаги |
-| `Uid_payment.csv` | Суммы и количество платежей между компаниями |
-| `Fid_Uid_link.csv` | Связи физлиц с компаниями |
-| `Uid_product.csv` | Записи о продуктах компаний |
+| `Uid_data.csv` | Company profiles, industries, revenue, groups, and product flags |
+| `Uid_payment.csv` | Amounts and counts of payments between companies |
+| `Fid_Uid_link.csv` | Links between individuals and companies |
+| `Uid_product.csv` | Company product records |
 
-## Связи
+## Relationships
 
 ```mermaid
 flowchart TB
-    C("Uid_data<br/>Компании и группы")
-    P("Uid_payment<br/>Платежи")
-    F("Fid_Uid_link<br/>Связи с физлицами")
-    R("Uid_product<br/>Продукты компаний")
+    C("Uid_data<br/>Companies and groups")
+    P("Uid_payment<br/>Payments")
+    F("Fid_Uid_link<br/>Links to individuals")
+    R("Uid_product<br/>Company products")
 
     C -->|PAYER / BENEFICIARY| P
     C -->|SYNTHETIC_U| F
@@ -32,83 +32,83 @@ flowchart TB
     class P,F,R related
 ```
 
-- **Компания** связывается с платежами, физлицами и продуктами через `SYNTHETIC_U`.
-- **Группа компаний** объединяет записи профилей с одинаковым `GROUP_ID`.
-- **Физлицо** может быть связано с несколькими компаниями. У компании также может быть несколько связанных физлиц.
+- **A company** is linked to payments, individuals, and products through `SYNTHETIC_U`.
+- **A corporate group** contains profile records with the same `GROUP_ID`.
+- **An individual** can be linked to several companies. A company can also have several linked individuals.
 
-В таблице профилей встречаются повторяющиеся `SYNTHETIC_U`. При объединении с платежами код исключает идентификаторы, которым соответствуют несколько профилей.
+The profile table contains repeated `SYNTHETIC_U` values. When joining profiles to payments, the code excludes IDs that match multiple profiles.
 
-## Поля таблиц
+## Table fields
 
 <details>
-<summary><b>Профили компаний — Uid_data.csv</b></summary>
+<summary><b>Company profiles — Uid_data.csv</b></summary>
 
-| Поле | Содержание |
+| Field | Contents |
 | :--- | :--- |
-| `SYNTHETIC_U` | Идентификатор компании |
-| `ORG_TYPE` | Тип организации |
-| `OKFS_NAME` | Форма собственности |
-| `OGRN_DATE` | Дата регистрации ОГРН |
-| `ECO_MARK_LABEL` | Стадия развития бизнеса |
-| `MAINOKVED_CODE` | Код основного вида деятельности |
-| `MAINOKVED_NAME` | Название основного вида деятельности |
-| `NEGATIVEMARK` | Наличие ключевого собственника по словарю кейса |
-| `AMOUNT_WORKERS_SPARK` | Численность сотрудников по данным СПАРК |
-| `AMOUNT_WORKERS_FNS` | Численность сотрудников по данным ФНС |
-| `CL_TYPE` | Действующий или потенциальный клиент |
-| `CL_PRODUCT_RKO_MARK` | Флаг расчётно-кассового обслуживания |
-| `CL_PRODUCT_GAR_MARK` | Флаг банковской гарантии |
-| `CL_PRODUCT_LOA_MARK` | Флаг кредита |
-| `CL_PRODUCT_LEA_MARK` | Флаг лизинга |
-| `CL_PRODUCT_DEP_MARK` | Флаг депозита |
-| `CL_PRODUCT_ZPP_MARK` | Флаг зарплатного проекта |
-| `FTS_FLAG` | Флаг присутствия в базе ФТС |
-| `FTS_COUNTRY_NAME` | Страна из базы ФТС |
-| `FACTORING_MARK` | Флаг факторинга |
-| `REVENUE_COMPANY` | Годовая выручка компании |
-| `REVENUE_GROUP` | Годовая выручка группы |
-| `GROUP_ID` | Идентификатор группы |
-| `CITY` | Город |
-| `REGION` | Регион |
+| `SYNTHETIC_U` | Company ID |
+| `ORG_TYPE` | Organization type |
+| `OKFS_NAME` | Form of ownership |
+| `OGRN_DATE` | OGRN registration date |
+| `ECO_MARK_LABEL` | Business development stage |
+| `MAINOKVED_CODE` | Primary business activity code |
+| `MAINOKVED_NAME` | Primary business activity name |
+| `NEGATIVEMARK` | Presence of a key owner, as defined in the case data dictionary |
+| `AMOUNT_WORKERS_SPARK` | Employee count according to SPARK |
+| `AMOUNT_WORKERS_FNS` | Employee count according to the Federal Tax Service |
+| `CL_TYPE` | Current or prospective customer |
+| `CL_PRODUCT_RKO_MARK` | Settlement and cash services flag |
+| `CL_PRODUCT_GAR_MARK` | Bank guarantee flag |
+| `CL_PRODUCT_LOA_MARK` | Loan flag |
+| `CL_PRODUCT_LEA_MARK` | Leasing flag |
+| `CL_PRODUCT_DEP_MARK` | Deposit flag |
+| `CL_PRODUCT_ZPP_MARK` | Payroll services flag |
+| `FTS_FLAG` | Flag indicating presence in the Federal Customs Service database |
+| `FTS_COUNTRY_NAME` | Country from the Federal Customs Service database |
+| `FACTORING_MARK` | Factoring flag |
+| `REVENUE_COMPANY` | Annual company revenue |
+| `REVENUE_GROUP` | Annual group revenue |
+| `GROUP_ID` | Group ID |
+| `CITY` | City |
+| `REGION` | Region |
 
 </details>
 
 <details>
-<summary><b>Платежи — Uid_payment.csv</b></summary>
+<summary><b>Payments — Uid_payment.csv</b></summary>
 
-| Поле | Содержание |
+| Field | Contents |
 | :--- | :--- |
-| `PAYER` | Идентификатор компании-отправителя |
-| `BENEFICIARY` | Идентификатор компании-получателя |
-| `PAY_AMT` | Сумма платежей |
-| `PAY_CNT` | Количество платежей |
+| `PAYER` | Payer company ID |
+| `BENEFICIARY` | Recipient company ID |
+| `PAY_AMT` | Total payment amount |
+| `PAY_CNT` | Payment count |
 
-Строка содержит агрегированные платежи между отправителем и получателем. Дат платежей в таблице нет.
+Each row contains aggregated payments between a payer and a recipient. The table contains no payment dates.
 
 </details>
 
 <details>
-<summary><b>Связи с физлицами — Fid_Uid_link.csv</b></summary>
+<summary><b>Links to individuals — Fid_Uid_link.csv</b></summary>
 
-| Поле | Содержание |
+| Field | Contents |
 | :--- | :--- |
-| `SYNTHETIC_F` | Идентификатор физлица |
-| `SYNTHETIC_U` | Идентификатор связанной компании |
-| `CITY_NAME` | Город физлица |
-| `RC_NAME` | Регион физлица |
+| `SYNTHETIC_F` | Individual ID |
+| `SYNTHETIC_U` | Linked company ID |
+| `CITY_NAME` | Individual's city |
+| `RC_NAME` | Individual's region |
 
-Связь с компанией не определяет должность, права или роль человека в принятии решения. Таких полей в таблице нет.
+A link to a company does not identify the person's job title, permissions, or decision-making role. The table contains no such fields.
 
 </details>
 
 <details>
-<summary><b>Продукты компаний — Uid_product.csv</b></summary>
+<summary><b>Company products — Uid_product.csv</b></summary>
 
-| Поле | Содержание |
+| Field | Contents |
 | :--- | :--- |
-| `SYNTHETIC_U` | Идентификатор компании |
-| `PRODUCT` | Название продукта |
+| `SYNTHETIC_U` | Company ID |
+| `PRODUCT` | Product name |
 
-Таблица содержит только компанию и продукт. Дат заявок, их статусов и результатов коммуникаций в ней нет.
+The table contains only the company and product. It has no application dates, statuses, or communication outcomes.
 
 </details>
