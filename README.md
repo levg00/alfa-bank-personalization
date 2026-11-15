@@ -16,7 +16,7 @@ A concept for extending Alfa-Bank's ML optimizer: selecting a banking offer, cop
 
 ## 🎯 Task
 
-Adapt banking offers to the company's industry, the employee's role, and the business structure. Propose an application journey that responds to user actions and integrate the solution into the existing optimizer.
+Adapt banking offers to the company's industry, the employee's role, and the business structure. Propose an application journey that responds to user actions. Extend the existing ML optimizer's logic to use this information when selecting the product, copy, channel, and message frequency.
 
 📋 [Case brief](materials/brief.en.pdf)
 
