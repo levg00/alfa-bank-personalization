@@ -10,6 +10,8 @@
 
 🏆 **Финал кейс-школы «Альфа-Будущее»**, команда **«Первые»**.
 
+![Мой вклад: продуктовая часть, аналитика и прототипирование](assets/my-contribution.ru.svg)
+
 ### 🖥️ [Открыть прототип](https://levg00.github.io/alfa-bank-personalization/) · 📄 [Финальная презентация](materials/presentation.ru.pdf) · 📊 [Расчёты](analysis/README.ru.md)
 
 ## 🎯 Задача

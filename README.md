@@ -10,6 +10,8 @@ A concept for extending Alfa-Bank's ML optimizer: selecting a banking offer, cop
 
 🏆 **Final round of the Alfa Future case school**, team **Pervye**.
 
+![My contribution: product work, analytics and prototyping](assets/my-contribution.en.svg)
+
 ### 🖥️ [Open prototype](https://levg00.github.io/alfa-bank-personalization/en/) · 📄 [Final presentation](materials/presentation.en.pdf) · 📊 [Calculations](analysis/README.md)
 
 ## 🎯 Task
