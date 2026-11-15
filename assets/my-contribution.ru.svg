@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="70" viewBox="0 0 760 70" role="img" aria-labelledby="title">
+  <title id="title">Мой вклад: продуктовая часть, аналитика и прототипирование</title>
+  <rect x="0" y="0" width="760" height="70" rx="10" fill="#142c43"/>
+  <path d="M10 0H5a5 5 0 0 0-5 5v60a5 5 0 0 0 5 5h5" fill="#58a6ff"/>
+  <g font-family="DejaVu Sans, Arial, sans-serif">
+    <text x="24" y="26" fill="#8cc8ff" font-size="13" font-weight="700" letter-spacing="1">МОЙ ВКЛАД</text>
+    <text x="24" y="52" fill="#ffffff" font-size="19" font-weight="700">Продуктовая часть</text>
+    <text x="251" y="52" fill="#58a6ff" font-size="19">·</text>
+    <text x="271" y="52" fill="#ffffff" font-size="19" font-weight="700">Аналитика</text>
+    <text x="405" y="52" fill="#58a6ff" font-size="19">·</text>
+    <text x="425" y="52" fill="#ffffff" font-size="19" font-weight="700">Прототипирование</text>
+  </g>
+</svg>
