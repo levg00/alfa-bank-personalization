@@ -6,8 +6,6 @@
 
 [↩ Applied projects](https://github.com/levg00/levg00/blob/main/portfolio/applied.en.md)
 
-A concept for extending Alfa-Bank's ML optimizer: selecting a banking offer, copy, channel, and message frequency based on the company's business and the employee's role.
-
 🏆 **Final round of the Alfa Future case school**, team **Pervye**.
 
 ![My contribution: product work, analytics and prototyping](assets/my-contribution.en.svg)
@@ -16,7 +14,7 @@ A concept for extending Alfa-Bank's ML optimizer: selecting a banking offer, cop
 
 ## 🎯 Task
 
-Adapt banking offers to the company's industry, the employee's role, and the business structure. Propose an application journey that responds to user actions. Extend the existing ML optimizer's logic to use this information when selecting the product, copy, channel, and message frequency.
+A concept for extending Alfa-Bank's ML optimizer: selecting a banking offer, copy, channel, and message frequency based on the company's business and the employee's role. Propose an application journey that responds to user actions.
 
 📋 [Case brief](materials/brief.en.pdf)
 
